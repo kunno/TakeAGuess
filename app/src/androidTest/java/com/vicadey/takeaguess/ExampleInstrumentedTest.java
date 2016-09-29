@@ -1,4 +1,4 @@
-package com.vicadey.higherlower;
+package com.vicadey.takeaguess;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

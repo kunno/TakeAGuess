@@ -1,4 +1,4 @@
-package com.vicadey.higherlower;
+package com.vicadey.takeaguess;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
