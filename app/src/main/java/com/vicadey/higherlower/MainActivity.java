@@ -15,20 +15,36 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Random random = new Random();
-    int randomNumber = random.nextInt(100) + 1;
+    public static Random random = new Random();
+    public static final int limit = 100;
+    public static int randomNumber;
+    public static int currentScore = 0;
 
 
     public void randomClicked(View v) {
+        Toast.makeText(getApplicationContext(), "Sorry... lose a point for that!", Toast.LENGTH_SHORT).show();
+        currentScore--;
+        if(currentScore <= 0){
+            currentScore = 0;
+        }
+        Toast.makeText(getApplicationContext(), "Current Score: " + currentScore, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Starting new game. Please wait...", Toast.LENGTH_LONG).show();
+        randomNumber = random.nextInt(limit) + 1;
+        Toast.makeText(getApplicationContext(), "New game started. Take another guess!", Toast.LENGTH_LONG).show();
 
 
-        randomNumber = random.nextInt(100) + 1;
+
     }
 
     public void showButton(View a){
 
-        Toast.makeText(getApplicationContext(), randomNumber + " was the correct number. GG, Try agian!", Toast.LENGTH_SHORT).show();
-        randomNumber = random.nextInt(100) + 1;
+        Toast.makeText(getApplicationContext(), randomNumber + " was the correct number. GG, Try again!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Resetting Score. Please wait...", Toast.LENGTH_LONG).show();
+        currentScore = 0;
+
+        Toast.makeText(getApplicationContext(), "Starting new game. Please wait...", Toast.LENGTH_LONG).show();
+        randomNumber = random.nextInt(limit) + 1;
+        Toast.makeText(getApplicationContext(), "Current Score: " + currentScore, Toast.LENGTH_SHORT).show();
     }
 
     public void buttonClicked(View view) {
@@ -48,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 Toast.makeText(getApplicationContext(), "You got it!", Toast.LENGTH_SHORT).show();
+                currentScore++;
+                Toast.makeText(getApplicationContext(), "Current Score: " + currentScore, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Starting new game. Please wait...", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "New game started. Take another guess!", Toast.LENGTH_LONG).show();
+                randomNumber = random.nextInt(limit) + 1;
 
             }
         }
@@ -62,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        randomNumber = random.nextInt(limit) + 1;
 
 
     }
